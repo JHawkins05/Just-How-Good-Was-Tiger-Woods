@@ -9,6 +9,15 @@ This is a data science project exploring Tiger Woods' career dominance using PGA
 It is part of the Data Science in Economics module.
 
 ## Repository Overview
+This repository is structured as follows:
+
+├── README
+├── Makefile
+├── blog.ipynb
+├── blog.txt
+├── data/
+├── scripts/
+├── figures/
 
 
 ## Running Instructions
