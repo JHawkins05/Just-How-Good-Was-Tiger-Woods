@@ -1,0 +1,15 @@
+---
+title: "Just How Good Was Tiger Woods?"
+author: "James Hawkins"
+format:
+  html:
+    toc: true
+    theme: cosmo
+    code-fold: true
+---
+
+## 🏌️ Introduction
+
+Tiger Woods didn’t just win tournaments — he reshaped golf’s history. But how dominant was he, really?
+
+## Performance Metrics

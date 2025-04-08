@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Just How Good Was Tiger Woods?",
+    "section": "",
+    "text": "Tiger Woods didn’t just win tournaments — he reshaped golf’s history. But how dominant was he, really?"
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Just How Good Was Tiger Woods?",
+    "section": "",
+    "text": "Tiger Woods didn’t just win tournaments — he reshaped golf’s history. But how dominant was he, really?"
+  },
+  {
+    "objectID": "index.html#performance-metrics",
+    "href": "index.html#performance-metrics",
+    "title": "Just How Good Was Tiger Woods?",
+    "section": "Performance Metrics",
+    "text": "Performance Metrics"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "tigerwoods_project",
+    "section": "",
+    "text": "import pandas as pd\n\nprint(\"hello\")\n\nhello"
+  }
+]
