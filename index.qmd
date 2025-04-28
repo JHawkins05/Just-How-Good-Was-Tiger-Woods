@@ -13,7 +13,7 @@ format:
 
 ## Introduction
 
-Few athletes have ever reshaped their sport like Tiger Woods did in golf. From the moment he burst onto the scene at the 1997 Masters to his storybook win at Augusta in 2019, Tiger didn't just win — he redefined what winning meant. His career set new standards for greatness, consistency, resilience, and intimidation.
+Few athletes have ever reshaped a sport like Tiger Woods has done in golf. From the moment he burst onto the scene at the 1997 Masters to his storybook win at Augusta in 2019, Tiger didn't just win — he redefined what winning meant. His career set new standards for greatness, consistency, resilience, and intimidation.
 
 But how good was Tiger Woods — not in memories or highlight reels, but in cold, hard data?
 
@@ -73,7 +73,7 @@ But then there’s Tiger Woods.
 ![](figures/animated_rankings.mp4)
 Figure: World Golf Rankings over time.
 
-From the late 1990s through the late 2000s, Tiger didn’t just reach No. 1 — he lived there. Week after week, month after month, year after year, Tiger anchored himself at the top while waves of other great players crashed below.
+From the late 1990s (when the Offical World Golf Rankings was established) through the late 2000s, Tiger didn’t just reach No. 1 — he lived there. Week after week, month after month, year after year, Tiger anchored himself at the top while waves of other great players crashed below.
 
 At his peak, Tiger spent 683 weeks as the No. 1 ranked player in the world. That’s over 13 cumulative years — more than double the next closest golfer.
 
