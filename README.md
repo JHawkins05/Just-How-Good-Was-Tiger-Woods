@@ -18,7 +18,7 @@ Outputs include cleaned datasets, static visualizations, and an animated video.
 This repository is structured as follows:
 
 ├── README.md  
-├── MakeFile
+├── MakeFile 
 ├── index.qmd  
 ├── _quarto.yml  
 ├── data/  
@@ -74,7 +74,7 @@ quarto render index.qmd
 ```
 ---
 
-Both ways will generate the cleaned datasets, figures, animation, and final blog output in the docs/ folder. The blog can be viewed by opening `docs/index.html` in a web browser.
+Both ways will generate the cleaned datasets, figures, animation, and final blog output in the docs/ folder. The produced blog can be viewed by opening `docs/index.html` in a web browser.
 
 
 ## More Resources
@@ -91,3 +91,4 @@ The blog can be found at: https://jhawkins05.github.io/Just-How-Good-Was-Tiger-W
 
 This repository was created by **James Hawkins**.  
 For queries, please contact: [hawkins.jd@outlook.com](mailto:hawkins.jd@outlook.com)
+

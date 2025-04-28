@@ -42,7 +42,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import matplotlib.animation as animation
 from matplotlib.animation import FuncAnimation
 from matplotlib.dates import DateFormatter
-import matplotlib.ticker as ticker
 
 
 
@@ -50,27 +49,42 @@ import matplotlib.ticker as ticker
 # 1. SCRAPE DATA FROM PGATOUR.COM
 # ============================================================================
 
+import time
 start_time = time.time()
+
+import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 # Setup ChromeDriver
 CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
 service = Service(CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
 driver = webdriver.Chrome(service=service, options=options)
 
 # Setup select all players function
 def select_all_players(driver):
-    # Click the dropdown button
-    dropdown_button = driver.find_element(By.CSS_SELECTOR, ".css-1lbp250")
-    dropdown_button.click()
-    time.sleep(1)  # Give dropdown time to open
-    # Click the "All Players" option
-    all_option = driver.find_element(By.CSS_SELECTOR, ".css-9ylzes")
-    all_option.click()
-    time.sleep(1)  # Allow page to refresh
+    try:
+        # Click the dropdown button
+        dropdown_button = driver.find_element(By.CSS_SELECTOR, ".css-1lbp250")
+        dropdown_button.click()
+        time.sleep(1)  # Give dropdown time to open
+
+        # Click the "All Players" option
+        all_option = driver.find_element(By.CSS_SELECTOR, ".css-9ylzes")
+        all_option.click()
+        time.sleep(1)  # Allow page to refresh
+
+        print("✅ 'All Players' selected.")
+    
+    except Exception as e:
+        print(f"❌ Failed to select 'All Players': {e}")
 
 # Load main player page and select all players 
+driver = webdriver.Chrome(service=service, options=options)
 driver.get("https://www.pgatour.com/players")
 time.sleep(5)
 select_all_players(driver)  # Selects All Players (not just Active)
@@ -85,6 +99,7 @@ while True:
     if new_height == last_height:
         break
     last_height = new_height
+
 driver.quit()
 
 # Collect player profile links
@@ -118,9 +133,11 @@ def scrape_player(name, url):
                 continue
 
         driver.quit()
+        print(f"✅ {name} scraped.")
         return stats_dict
 
     except Exception as e:
+        print(f"❌ ERROR for {name}: {e}")
         return None
 
 # Run scraping in parallel
@@ -135,9 +152,14 @@ with ThreadPoolExecutor(max_workers=5) as executor:
 
 driver.quit()
 
-# Convert to dataframe and save to csv
+# Convert to dataframe and print
 df_raw = pd.DataFrame(raw_data)
+print("\n=== RAW DATAFRAME (UNCLEANED) ===")
+print(df_raw)
 df_raw.to_csv("data/pga_raw_data.csv", index=False)
+
+end_time = time.time()
+print(f"⏱️ PGA tour scrape: {end_time - start_time:.2f} seconds")  # 6236 seconds for 2518 players (104 minutes)
 
 
 
@@ -145,6 +167,7 @@ df_raw.to_csv("data/pga_raw_data.csv", index=False)
 # 2. DATA CLEANING
 # ============================================================================
 
+import pandas as pd
 df_raw = pd.read_csv("data/pga_raw_data.csv")
 
 # Filter players with more than 20 events played
@@ -193,7 +216,7 @@ df_clean["Top 10 %"] = df_clean.apply(
     axis=1
 )
 
-# Save cleaned dataframe to csv
+# Save cleaned DataFrame
 df_clean.to_csv("data/pga_clean_data.csv", index=False)
 
 
@@ -202,6 +225,12 @@ df_clean.to_csv("data/pga_clean_data.csv", index=False)
 # 3. GRAPH BUILDING
 # ============================================================================
 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+# Load cleaned data
 df_clean = pd.read_csv("data/pga_clean_data.csv")
 
 # Set style globally
@@ -382,7 +411,16 @@ plt.savefig("figures/earnings.png")
 # 4. SCRAPE DATA FROM DATAGOLF.COM
 # ============================================================================
 
-# List of players who have ever been OWGR No. 1 (format: LASTNAME FIRSTNAME)
+import time
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+
+# ⏱️ Start timing
+start_time = time.time()
+
+# List of players who have ever been OWGR No. 1 (format: LASTNAME FIRSTNAME)       taken our Ian Woosnam, Tom Lehman, David Duval, Seve Ballesteros, Martin Kaymer, Ernie Els
 no1_players = [
     "WOODS TIGER", "NORMAN GREG", "FALDO NICK", "COUPLES FRED", 
     "PRICE NICK", "SINGH VIJAY", "WESTWOOD LEE", "DONALD LUKE", 
@@ -393,14 +431,11 @@ no1_players = [
 ]
 
 # Setup ChromeDriver
-CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
-service = Service(CHROMEDRIVER_PATH)
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-driver = webdriver.Chrome(service=service, options=options)
-
-# Load DataGolf rankings page
+options = Options()
+# options.add_argument('--headless')  # uncomment to run in background
+driver = webdriver.Chrome(options=options)
 driver.get("https://datagolf.com/datagolf-rankings")
+
 # Wait for page to fully load
 time.sleep(5)
 
@@ -410,7 +445,7 @@ time.sleep(1)
 
 # Get all date option
 date_elements = driver.find_elements(By.CLASS_NAME, "date-option")
-date_elements_filtered = date_elements[1::4]  # Skip the most recent then take every 13th reading so we get 4 readings a year
+date_elements_filtered = date_elements[1::13]  # Skip the most recent then take every 13th reading so we get 4 readings a year
 
 all_data = []
 
@@ -453,38 +488,55 @@ for i, _ in enumerate(date_elements_filtered):
                 print(f"⚠️ Skipping row due to error: {e}")
                 continue
 
+        print(f"✅ Collected data for {date_str}")
+
     except Exception as e:
+        print(f"❌ Error on date index {i}: {e}")
         continue
 
+# Quit browser
 driver.quit()
 
 # Save to CSV
 rankings_df = pd.DataFrame(all_data)
 rankings_df.to_csv("data/no1s_rankings.csv", index=False)
 
+# Show preview
+print("\n📊 Preview:")
+print(rankings_df.head())
+print("\n📁 Saved as 'no1s_rankings.csv'")
+
+end_time = time.time()
+print(f"⏱️ DataGolf Scrape: {end_time - start_time:.2f} seconds")
 
 
 # ============================================================================
 # 5. ANIMATED GRAPH
 # ============================================================================
 
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib.animation import FuncAnimation
+from matplotlib.dates import DateFormatter
+import os
 
-# ===== Load and prepare data =====
+# === Step 1: Load and prepare data ===
 rankings_df = pd.read_csv("data/no1s_rankings.csv")
 
 # Clean up
 rankings_df['date'] = pd.to_datetime(rankings_df['date'])
 
-# Keep only top 25 ranks
-top50_df = rankings_df[rankings_df['rank'] <= 25]
+# Keep only top 50 ranks
+top50_df = rankings_df[rankings_df['rank'] <= 50]
 
 # Pivot for plotting
 pivot_df = top50_df.pivot(index='date', columns='player', values='rank')
 
-# Fill missing with 30 to ensure smooth drop-off
-pivot_df = pivot_df.fillna(30)
+# Fill missing with 101 to ensure smooth drop-off
+pivot_df = pivot_df.fillna(101)
 
-# ===== Set up figure =====
+# === Step 2: Set up figure ===
 fig, ax = plt.subplots(figsize=(20, 8))
 
 ax.invert_yaxis()
@@ -511,6 +563,7 @@ colours = [
     "#74c476",  # Mint Green
 ]
 
+
 # Date formatting
 ax.xaxis.set_major_formatter(DateFormatter("%b %Y"))
 
@@ -535,11 +588,11 @@ for player in pivot_df.columns:
         dots[player], = ax.plot([], [], 'o', color=color, markersize=6)
         color_index += 1
 
-# Set title
+# Set title nicely
 ax.set_title(
     'Animated Rankings Over Time - Former World No. 1s',
     fontsize=22,
-    pad=30 
+    pad=30  # Move title up
 )
 
 # Legend clean and inside
@@ -554,7 +607,7 @@ ax.legend(
 # Tight layout to remove excess white space
 fig.tight_layout(pad=2.0)
 
-# ===== Animation functions =====
+# === Step 3: Animation functions ===
 
 def init():
     ax.set_xlim(pivot_df.index.min(), pivot_df.index.max())
@@ -581,7 +634,7 @@ def update(frame):
 
     if len(tiger_x) > 0:
         update.tiger_label = ax.text(
-            tiger_x[-1] + pd.Timedelta(days=10),  # slightly to the right
+            tiger_x[-1] + pd.Timedelta(days=10),  # Slightly to the right
             tiger_y[-1],
             "Tiger Woods", fontsize=10, color='red',
             ha='left', va='center'
@@ -589,21 +642,19 @@ def update(frame):
 
     return list(lines.values()) + list(dots.values()) + [update.tiger_label]
 
-# ===== Create the animation =====
+# === Step 4: Create the animation ===
 ani = FuncAnimation(
     fig, update, frames=len(pivot_df.index),
     init_func=init, blit=True, interval=30 
 )
 
+# Ensure figures/ directory exists
+os.makedirs('figures', exist_ok=True)
+
 # Save the animation
-plt.rcParams['animation.ffmpeg_path'] = r"C:\ffmpeg\bin\ffmpeg.exe" 
+plt.rcParams['animation.ffmpeg_path'] = r"C:\ffmpeg\bin\ffmpeg.exe"  # Adjust if needed
 writer = animation.FFMpegWriter(fps=10, metadata=dict(artist='TigerWoodsProject'), bitrate=1800)
 
 ani.save('figures/animated_rankings.mp4', writer=writer, dpi=200)
 
-
-
-# ============================================================================
-
-end_time = time.time()
-print(f"⏱️ Total time: {end_time - start_time:.2f} seconds")
+# plt.show()
