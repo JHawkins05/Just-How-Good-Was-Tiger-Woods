@@ -55,12 +55,11 @@ This has been tested using Python 3.10.12 for Windows 11. Within python, a numbe
    > - quarto  1.7.22 
    > - ffmpeg 7.1.1
 
-In order to replicate all results, if make is available it should be sufficient to type "make" at the command line. 
-
 **Important:** Prior to running make, the only change required is to adjust the `CHROMEDRIVER_PATH` variable in `scripts/tigerwoods.py` on line 63 to point to your local ChromeDriver installation.
 
----
+In order to replicate all results, if make is available it should be sufficient to type "make" at the command line.
 
+---
 Alternatively, if make is not available, the following steps can be followed to replicate the results.
 
 1. Run the Python script to scrape, clean, and generate figures:
@@ -73,7 +72,9 @@ python tigerwoods.py
 bash
 quarto render index.qmd
 ```
-This will generate the cleaned datasets, figures, animation, and final blog output in the docs/ folder.
+---
+
+Both ways will generate the cleaned datasets, figures, animation, and final blog output in the docs/ folder. The blog can be viewed by opening `docs/index.html` in a web browser.
 
 
 ## More Resources
@@ -90,4 +91,3 @@ The blog can be found at: https://jhawkins05.github.io/Just-How-Good-Was-Tiger-W
 
 This repository was created by **James Hawkins**.  
 For queries, please contact: [hawkins.jd@outlook.com](mailto:hawkins.jd@outlook.com)
-

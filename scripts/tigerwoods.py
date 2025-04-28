@@ -1,4 +1,4 @@
-""" 1_MAIN_script.py         jameshawkins             yyyy-mm-dd:2025-04-28
+""" tigerwoods.py         jameshawkins             yyyy-mm-dd:2025-04-28
 ---|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----8
 
   This file collects and analyzes PGA Tour player data to explore the 
