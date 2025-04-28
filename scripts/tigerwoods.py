@@ -56,7 +56,7 @@ start_time = time.time()
 CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
 service = Service(CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
+options.add_argument("--headless=new")
 driver = webdriver.Chrome(service=service, options=options)
 
 # Setup select all players function
@@ -396,7 +396,7 @@ no1_players = [
 CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
 service = Service(CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
+options.add_argument("--headless=new")
 driver = webdriver.Chrome(service=service, options=options)
 
 # Load DataGolf rankings page
