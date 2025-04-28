@@ -17,7 +17,7 @@
    README code in the top level of this directory.
 
   ChromeDriver must be installed and correctly referenced in the CHROMEDRIVER_PATH 
-  variable on line 63. All library versions are specified in README.
+  variable on line 56. All library versions are specified in README.
 
   Contact: mailto:hawkins.jd@outlook.com
 """
@@ -56,7 +56,6 @@ start_time = time.time()
 CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
 service = Service(CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")
 driver = webdriver.Chrome(service=service, options=options)
 
 # Setup select all players function
@@ -396,7 +395,6 @@ no1_players = [
 CHROMEDRIVER_PATH = "C:/Users/hawki/chromedriver-win64/chromedriver.exe"
 service = Service(CHROMEDRIVER_PATH)
 options = webdriver.ChromeOptions()
-options.add_argument("--headless=new")
 driver = webdriver.Chrome(service=service, options=options)
 
 # Load DataGolf rankings page

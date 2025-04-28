@@ -55,7 +55,7 @@ This has been tested using Python 3.10.12 for Windows 11. Within python, a numbe
    > - quarto  1.7.22 
    > - ffmpeg 7.1.1
 
-**Important:** Prior to running make, the only change required is to adjust the `CHROMEDRIVER_PATH` variable in `scripts/tigerwoods.py` on line 63 to point to your local ChromeDriver installation.
+**Important:** Prior to running make, the only change required is to adjust the `CHROMEDRIVER_PATH` variable in `scripts/tigerwoods.py` on line 56 to point to your local ChromeDriver installation.
 
 In order to replicate all results, if make is available it should be sufficient to type "make" at the command line.
 
