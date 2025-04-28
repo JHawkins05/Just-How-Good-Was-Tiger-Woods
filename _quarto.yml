@@ -3,17 +3,12 @@ project:
   output-dir: docs
 
 website:
-  title: "tigerwoods_project"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: about.qmd
+  title: "Tiger Woods Empirical Project"
 
 format:
   html:
     theme:
       - cosmo
-      - brand
+      - flatly
     css: styles.css
     toc: true
