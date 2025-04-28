@@ -18,6 +18,7 @@ Outputs include cleaned datasets, static visualizations, and an animated video.
 This repository is structured as follows:
 
 ├── README.md  
+├── MakeFile
 ├── index.qmd  
 ├── _quarto.yml  
 ├── data/  
@@ -46,17 +47,19 @@ This repository is structured as follows:
 
 ## Running Instructions
 
-This has been tested using Python 3.10.12 for linux. Within python, a number of additional libraries are required.  These are indicated below, along with the version number used to generate original results:
+This has been tested using Python 3.10.12 for Windows 11. Within python, a number of additional libraries are required.  These are indicated below, along with the version number used to generate original results:
    > - pandas  2.2.3
    > - matplotlib  3.10.1
    > - seaborn  0.13.2
    > - selenium  4.31.0
    > - quarto  1.7.22 
-   > - ffmeg 7.1.1
+   > - ffmpeg 7.1.1
 
 In order to replicate all results, if make is available it should be sufficient to type "make" at the command line. 
 
 **Important:** Prior to running make, the only change required is to adjust the `CHROMEDRIVER_PATH` variable in `scripts/tigerwoods.py` on line 63 to point to your local ChromeDriver installation.
+
+---
 
 Alternatively, if make is not available, the following steps can be followed to replicate the results.
 
@@ -80,8 +83,7 @@ The project pulls data from:
 - [PGA Tour Statistics](https://www.pgatour.com)
 - [DataGolf Rankings](https://datagolf.com)
 
-The blog can be found at:
-https://jhawkins05.github.io/Just-How-Good-Was-Tiger-Woods/
+The blog can be found at: https://jhawkins05.github.io/Just-How-Good-Was-Tiger-Woods/
 
 
 ## About
