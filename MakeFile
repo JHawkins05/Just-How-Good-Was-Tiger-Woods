@@ -1,15 +1,16 @@
 # Makefile for Tiger Woods Project
 
 # Variables
-PYTHON=python
+PYTHON=python3
 
 all: run_script render_site
 
 run_script:
-	$(PYTHON) tigerwoods.py
+	$(PYTHON) scripts/tigerwoods.py
 
 render_site:
 	quarto render index.qmd
 
 clean:
 	rm -rf data/*.csv figures/*.png figures/*.mp4 docs/*
+
