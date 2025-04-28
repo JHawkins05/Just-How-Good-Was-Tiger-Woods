@@ -1,3 +1,50 @@
+""" 1_MAIN_script.py         jameshawkins             yyyy-mm-dd:2025-04-28
+---|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----8
+
+  This file collects and analyzes PGA Tour player data to explore the 
+  career dominance of Tiger Woods. It does so by scraping player statistics, 
+  cleaning the dataset, visualizing key performance measures, and creating 
+  an animated ranking of former World No. 1 players.
+
+  Data sources include:
+    - PGA Tour Player Profiles: https://www.pgatour.com/players
+    - DataGolf Rankings: https://datagolf.com/datagolf-rankings
+
+  The script generates all figures, cleaned datasets, and the animation 
+  required for the Quarto blog project.
+
+  Full details related to the replication of this file can be found in the 
+   README code in the top level of this directory.
+
+  ChromeDriver must be installed and correctly referenced in the CHROMEDRIVER_PATH 
+  variable on line 63. All library versions are specified in README.
+
+  Contact: mailto:hawkins.jd@outlook.com
+"""
+
+
+
+# ============================================================================
+# 0. IMPORTS
+# ============================================================================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import time
+import os
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import matplotlib.animation as animation
+from matplotlib.animation import FuncAnimation
+from matplotlib.dates import DateFormatter
+
+
+
 # ============================================================================
 # 1. SCRAPE DATA FROM PGATOUR.COM
 # ============================================================================
