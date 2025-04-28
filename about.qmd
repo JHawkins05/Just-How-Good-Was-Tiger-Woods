@@ -1,5 +1,9 @@
 ---
 title: "About"
+author: James Hawkins
+date: "2025-04-28"
+format: html
 ---
 
-About this site
+## Introduction
+
