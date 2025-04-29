@@ -84,7 +84,6 @@ while True:
     if new_height == last_height:
         break
     last_height = new_height
-driver.quit()
 
 # Collect player profile links
 player_elements = driver.find_elements(By.CSS_SELECTOR, "a.chakra-linkbox__overlay.css-1hnz6hu")
@@ -408,7 +407,7 @@ time.sleep(1)
 
 # Get all date option
 date_elements = driver.find_elements(By.CLASS_NAME, "date-option")
-date_elements_filtered = date_elements[1::4]  # Skip the most recent then take every 13th reading so we get 4 readings a year
+date_elements_filtered = date_elements[1::4]  # Skip the most recent then take every 4th reading so we get 13 readings a year
 
 all_data = []
 
@@ -420,7 +419,7 @@ for i, _ in enumerate(date_elements_filtered):
 
         # Re-fetch dropdown elements
         date_elements = driver.find_elements(By.CLASS_NAME, "date-option")
-        date_el = date_elements[1::13][i] 
+        date_el = date_elements[1::4][i] 
         date_el.click()
         time.sleep(2)
 
@@ -466,30 +465,29 @@ rankings_df.to_csv("data/no1s_rankings.csv", index=False)
 # 5. ANIMATED GRAPH
 # ============================================================================
 
-
 # ===== Load and prepare data =====
 rankings_df = pd.read_csv("data/no1s_rankings.csv")
 
 # Clean up
 rankings_df['date'] = pd.to_datetime(rankings_df['date'])
 
-# Keep only top 25 ranks
-top50_df = rankings_df[rankings_df['rank'] <= 25]
+# Keep only top 30 ranks
+top30_df = rankings_df[rankings_df['rank'] <= 30]
 
 # Pivot for plotting
-pivot_df = top50_df.pivot(index='date', columns='player', values='rank')
+pivot_df = top30_df.pivot(index='date', columns='player', values='rank')
 
-# Fill missing with 30 to ensure smooth drop-off
-pivot_df = pivot_df.fillna(30)
+# Fill missing with 40 to ensure smooth drop-off
+pivot_df = pivot_df.fillna(40)
 
 # ===== Set up figure =====
 fig, ax = plt.subplots(figsize=(20, 8))
 
 ax.invert_yaxis()
 
-# Light, transparent border
+# Transparent border
 for spine in ax.spines.values():
-    spine.set_alpha(0.3)
+    spine.set_alpha(0.1)
 
 colours = [
     "#1f77b4",  # Medium Blue
@@ -556,7 +554,7 @@ fig.tight_layout(pad=2.0)
 
 def init():
     ax.set_xlim(pivot_df.index.min(), pivot_df.index.max())
-    ax.set_ylim(50, 0)  # Space above rank 1
+    ax.set_ylim(30, 0)
     for line in lines.values():
         line.set_data([], [])
     for dot in dots.values():
@@ -579,7 +577,7 @@ def update(frame):
 
     if len(tiger_x) > 0:
         update.tiger_label = ax.text(
-            tiger_x[-1] + pd.Timedelta(days=10),  # slightly to the right
+            tiger_x[-1] + pd.Timedelta(days=10),
             tiger_y[-1],
             "Tiger Woods", fontsize=10, color='red',
             ha='left', va='center'
@@ -604,4 +602,4 @@ ani.save('figures/animated_rankings.mp4', writer=writer, dpi=200)
 # ============================================================================
 
 end_time = time.time()
-print(f"⏱️ Total time: {end_time - start_time:.2f} seconds")
+print(f"⏱️ DataGolf elapsed time: {end_time - start_time:.2f} seconds")
