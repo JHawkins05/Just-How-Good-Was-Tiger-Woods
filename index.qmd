@@ -87,6 +87,31 @@ Tiger didn’t just dominate a season. He built an era.
 
 ---
 
+## Strokes Gained: The Underlying Engine of Dominance
+
+If world rankings show you where Tiger Woods stood, strokes gained helps explain why he got there and stayed there.
+
+Strokes gained is golf’s most advanced performance metric. It tells us how much better (or worse) a player is compared to the rest of the field, factoring in course difficulty and shot type. It’s the best way to isolate skill from luck, environment, or scoring inflation.
+
+And when we use strokes gained to compare the top 10 players each year,Tiger breaks the chart.
+
+![](figures/animated_strokesgained.mp4)
+Figure: Strokes Gained over time.
+
+The  red line above is Tiger. In season after season, his average strokes gained per round wasn’t just higher, it was on a completely different level. In his prime years (especially 2000), he was gaining over 3.5 strokes per round on the field. That’s a number so far beyond normal elite performance that modern players, even the very best, don’t approach it.
+
+To put this into context:
+
+Scottie Scheffler, currently the No. 1 ranked player in the world, is gaining around 2.5 strokes in 2024, a phenomenal number by today’s standards.
+
+- Xander Schauffele, another top-tier pro, sits just above 2.0 strokes gained.
+
+- Tiger, at his best, regularly beat both... by an entire additional stroke per round.
+
+Over a four-round tournament, that difference adds up. It’s not just winning margins, it’s why he won so often. While most players were fighting for inches, Tiger was taking miles. His strokes gained numbers explain the unexplainable: the cut streaks, the win rates, the top finishes. The underlying math was working overtime in his favor.
+
+In the Tiger era, tournaments didn’t just start with a level playing field, they started with Tiger already ahead.
+
 ## Tiger at the Majors
 
 If regular tournaments showed Tiger’s dominance, the majors showed his ability to rise highest on the biggest stages.

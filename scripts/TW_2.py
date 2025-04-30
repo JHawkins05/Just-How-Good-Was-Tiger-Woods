@@ -17,7 +17,7 @@ from matplotlib.dates import DateFormatter
 
 
 # ============================================================================
-# 4. SCRAPE DATA FROM DATAGOLF.COM
+# 4. SCRAPE DATA FROM DATAGOLF.COM (Rankings)
 # ============================================================================
 
 # List of players who have ever been OWGR No. 1 (format: LASTNAME FIRSTNAME)
@@ -102,7 +102,7 @@ rankings_df.to_csv("data/no1s_rankings.csv", index=False)
 
 
 # ============================================================================
-# 5. ANIMATED GRAPH
+# 5. ANIMATED GRAPH (Rankings)
 # ============================================================================
 
 # ===== Load and prepare data =====
@@ -233,7 +233,7 @@ ani = FuncAnimation(
 
 # Save the animation
 plt.rcParams['animation.ffmpeg_path'] = r"C:\ffmpeg\bin\ffmpeg.exe" 
-writer = animation.FFMpegWriter(fps=10, metadata=dict(artist='TigerWoodsProject'), bitrate=1800)
+writer = animation.FFMpegWriter(fps=7, metadata=dict(artist='TigerWoodsProject'), bitrate=1800)
 
 ani.save('figures/animated_rankings.mp4', writer=writer, dpi=200)
 

@@ -1,5 +1,5 @@
 """ 
-TW_1.py and TW_2.py             jameshawkins              yyyy-mm-dd:2025-04-28
+TW_1.py & TW_2.py & TW_3.py         jameshawkins          yyyy-mm-dd:2025-04-28
 ---|----1----|----2----|----3----|----4----|----5----|----6----|----7----|----8
 
   This file collects and analyzes PGA Tour player data to explore the 
@@ -7,15 +7,21 @@ TW_1.py and TW_2.py             jameshawkins              yyyy-mm-dd:2025-04-28
   
   Due to complexity and runtime, the code is split into two separate scripts:
 
-  • `tigerwoods_part1.py` — Sections 0 to 3:
+  • `TW_1.py` — Sections 0 to 3:
         - Imports
         - Scraping PGA Tour player profiles
-        - Scraping and filtering historical DataGolf rankings
-        - Outputting raw player datasets
+        - Cleaning and filtering data
+        - Generating figures for blog post
 
-  • `tigerwoods_part2.py` — Sections 4 and 5:
-        - Cleaning and processing scraped data
-        - Visualization and animation of Tiger Woods' career dominance
+  • `TW_2.py` — Sections 0, 4 and 5:
+        - Imports
+        - Scraping and filtering historical DataGolf rankings
+        - Animation of rankings over time
+
+  • `TW_3.py` — Sections 0, 6 and 7:
+        - Imports
+        - Scraping and filtering historical DataGolf rankings
+        - Animation of strokes gained over time
 
   Data sources include:
     - PGA Tour Player Profiles: https://www.pgatour.com/players

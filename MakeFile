@@ -1,5 +1,5 @@
 # Define file paths
-PYTHON_SCRIPTS := scripts/tigerwoods.py scripts/working_script.py
+PYTHON_SCRIPTS := scripts/TW_1.py scripts/TW_2.py scripts/TW_3.py
 QMD_FILE := index.qmd
 OUTPUT_DIR := docs
 
@@ -9,8 +9,9 @@ all: render_blog
 # Run Python scripts
 data: $(PYTHON_SCRIPTS)
 	@echo "Running Python scripts..."
-	python3 scripts/tigerwoods.py
-	python3 scripts/working_script.py
+	python3 scripts/TW_1.py
+	python3 scripts/TW_2.py
+	python3 scripts/TW_3.py
 
 # Render Quarto blog
 render_blog: data $(QMD_FILE)
