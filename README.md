@@ -64,12 +64,17 @@ In order to replicate all results, if make is available it should be sufficient 
 ---
 Alternatively, if make is not available, the following steps can be followed to replicate the results.
 
-1. Run the Python script to scrape, clean, and generate figures:
+1. Run the Python script TW_1.py to scrape, clean, and generate figures (takes approximately 110 minutes to run):
 ```
 bash
-python tigerwoods.py
+python TW_1.py
 ```
-1. Render the Quarto site:
+2. Run the Python script TW_2.py to scrape, clean, and generate figures (takes approximately 40 minutes to run):
+```
+bash
+python TW_2.py
+```
+3. Render the Quarto site:
 ```
 bash
 quarto render index.qmd

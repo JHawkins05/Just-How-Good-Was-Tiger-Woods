@@ -1,16 +1,37 @@
-# Makefile for Tiger Woods Project
+# Define file paths
+PYTHON_SCRIPTS := scripts/tigerwoods.py scripts/working_script.py
+QMD_FILE := index.qmd
+OUTPUT_DIR := docs
 
-# Variables
-PYTHON=python3
+# Default target: run everything
+all: render_blog
 
-all: run_script render_site
+# Run Python scripts
+data: $(PYTHON_SCRIPTS)
+	@echo "Running Python scripts..."
+	python3 scripts/tigerwoods.py
+	python3 scripts/working_script.py
 
-run_script:
-	$(PYTHON) scripts/tigerwoods.py
+# Render Quarto blog
+render_blog: data $(QMD_FILE)
+	@echo "Rendering Quarto blog..."
+	quarto render $(QMD_FILE) --output-dir $(OUTPUT_DIR)
 
-render_site:
-	quarto render index.qmd
-
+# Clean generated files
 clean:
-	rm -rf data/*.csv figures/*.png figures/*.mp4 docs/*
+	@echo "Cleaning up generated files..."
+	rm -rf \
+		$(OUTPUT_DIR)/index.html \
+		$(OUTPUT_DIR)/site_libs \
+		$(OUTPUT_DIR)/figures \
+		project-cache/ \
+		quarto-session-* \
+		data/no1s_rankings.csv \
+		data/pga_clean_data.csv \
+		data/pga_raw_data.csv \
+		figures/*.mp4 \
+		figures/*.png \
+		search.json
 
+# Phony targets
+.PHONY: all data render_blog clean
