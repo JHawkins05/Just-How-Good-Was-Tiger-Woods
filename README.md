@@ -67,21 +67,30 @@ In order to replicate all results, if make is available it should be sufficient 
 ---
 Alternatively, if make is not available, the following steps can be followed to replicate the results.
 
-1. Run the Python script `TW_1.py` to scrape, clean, and generate figures (takes approximately 110 minutes to run):
+1. Run the Python script `TW_1.py` to generate `data/pga_raw_data.csv`, `data/pga_clean_data.csv`, `figures/earnings.png`, `figures/top5_vs_top10.png` and `figures/win_vs_cuts.png` (takes approximately 110 minutes to run):
 ```
 bash
 python TW_1.py
 ```
-1. Run the Python script `TW_2.py` to scrape, clean, and generate figures (takes approximately 40 minutes to run):
+
+2. Run the Python script `TW_2.py` to generate `data/no1s_rankings.csv` and `figures/animated_rankings.mp4` (takes approximately 40 minutes to run):
 ```
 bash
 python TW_2.py
 ```
-1. Render the Quarto site:
+
+3. Run the Python script `TW_3.py` to generate `data/strokes_gained.csv` and `figures/animated_strokesgained.mp4` (takes approximately 5 minutes to run):
+```
+bash
+python TW_3.py
+```
+
+4. Render the Quarto site:
 ```
 bash
 quarto render index.qmd
 ```
+
 ---
 
 Both ways will generate the cleaned datasets, figures, animation, and final blog output in the docs/ folder. The produced blog can be viewed by opening `docs/index.html` in a web browser.
