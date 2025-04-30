@@ -237,9 +237,3 @@ writer = animation.FFMpegWriter(fps=10, metadata=dict(artist='TigerWoodsProject'
 
 ani.save('figures/animated_rankings.mp4', writer=writer, dpi=200)
 
-
-
-# ============================================================================
-
-end_time = time.time()
-print(f"⏱️ DataGolf elapsed time: {end_time - start_time:.2f} seconds")

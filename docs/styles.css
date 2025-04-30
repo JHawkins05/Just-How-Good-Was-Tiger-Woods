@@ -1,6 +1,7 @@
 /* css styles */
 
 h1, h2, h3 {
+    text-align: center;
     font-weight: bold;
   }
   
@@ -10,7 +11,7 @@ h1, h2, h3 {
   }
   
   body {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* very light grey */
   }
   
   img, video {
