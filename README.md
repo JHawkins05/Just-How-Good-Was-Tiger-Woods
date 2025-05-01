@@ -62,7 +62,7 @@ Also required is the Chrome web browser and the ChromeDriver executable. The ver
 **Important:** Prior to running make, the only change required is to adjust the `CHROMEDRIVER_PATH` variable to point to your local ChromeDriver installation in:
 -  `TW_1.py` on line 67
 -  `TW_2.py` on line 34
--  `TW_2.py` o nline 23
+-  `TW_3.py` o nline 23
 
 In order to replicate all results, if make is available it should be sufficient to type "make" at the command line.
 
