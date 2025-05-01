@@ -8,8 +8,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
 import matplotlib.animation as animation
 from matplotlib.animation import FuncAnimation
 from matplotlib.dates import DateFormatter
@@ -47,7 +45,7 @@ time.sleep(1)
 
 # Get all date option
 date_elements = driver.find_elements(By.CLASS_NAME, "date-option")
-date_elements_filtered = date_elements[1::9]  # Skip the most recent then take every 9th reading so we get roughly 6 readings a year
+date_elements_filtered = date_elements[1::13]  # Skip the most recent then take every 13th reading so we get 4 readings a year
 
 all_data = []
 
@@ -59,7 +57,7 @@ for i, _ in enumerate(date_elements_filtered):
 
         # Re-fetch dropdown elements
         date_elements = driver.find_elements(By.CLASS_NAME, "date-option")
-        date_el = date_elements[1::9][i] 
+        date_el = date_elements[1::13][i] 
         date_el.click()
         time.sleep(2)
 
@@ -87,7 +85,6 @@ for i, _ in enumerate(date_elements_filtered):
                 all_data.append(record)
 
             except Exception as e:
-                print(f"⚠️ Skipping row due to error: {e}")
                 continue
 
     except Exception as e:

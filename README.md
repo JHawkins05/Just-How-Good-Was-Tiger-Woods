@@ -36,12 +36,14 @@ This repository is structured as follows:
 ├── .gitignore  
 ├── debug_page.html  
 └── styles.css
+└── blog post.txt
 
 - **data/**: Stores generated data from scraping PGA Tour and DataGolf.
 - **scripts/**: Contains the main Python script for data scraping, cleaning, and figure generation.
 - **figures/**: Stores generated figures and the animated rankings video.
 - **docs/**: Contains the published Quarto website (ready for GitHub Pages hosting).
 - **index.qmd**: Main Quarto file for the project blog.
+- **blog post.txt**: Contains a link to the blog post and a link to the GitHub repository.
 
 *Note: Data files and figures are automatically generated when running the script.*
 

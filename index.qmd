@@ -13,9 +13,9 @@ format:
 
 ## Introduction
 
-Few athletes have ever reshaped a sport like Tiger Woods has done in golf. From the moment he burst onto the scene at the 1997 Masters to his storybook win at Augusta in 2019, Tiger didn't just win — he redefined what winning meant. His career set new standards for greatness, consistency, resilience, and intimidation.
+Few athletes have ever reshaped a sport like Tiger Woods has done in golf. From the moment he burst onto the scene at the 1997 Masters to his storybook win at Augusta in 2019, Tiger didn't just win, he redefined what winning meant. His career set new standards for greatness, consistency, resilience, and intimidation.
 
-But how good was Tiger Woods — not in memories or highlight reels, but in cold, hard data?
+But how good was Tiger Woods. Not in memories or highlight reels, but in cold, hard data?
 
 This blog takes a statistical deep dive into Tiger’s career. We will explore his consistency, his top finishes, his earnings, his hold over the world rankings, and his superiority in advanced metrics like strokes gained. Along the way, we'll use data to paint a portrait of an athlete who wasn't just the best — he created an entirely new reality for what “best” could look like.
 
@@ -40,7 +40,7 @@ The graph speaks for itself: Tiger’s combination of consistency and winning is
 
 And he didn’t just win. He lived at the top.
 
-Throughout his career Tiger finished in the top 10 in more than half of his starts and during his prime years, he was even more dominant. His top-5 and top-10 rates are so far above the rest of the field and even above prime Nicklaus that they almost break the graph.
+Throughout his career Tiger finished in the top 10 in more than half of his starts and during his prime years, he was even more dominant. His top-5 and top-10 rates are so far above the rest of the field and even above prime Nicklaus.
 
 ![](figures/top5_vs_top10.png)
 Figure: Top 5 and Top 10 finishes compared to PGA Tour players.
@@ -53,7 +53,7 @@ Other great players cluster near the bottom celebrating a few big moments across
 
 If dominance ever needed a scoreboard, it would look a lot like Tiger Woods' bank account.
 
-Even without adjusting for inflation and the overall growth of the PGA Tour, Tiger’s career earnings tower over everyone else’s. He’s the only player to surpass $120 million in official prize money a total that dwarfs the next closest player, Rory McIlroy, by over $17 million.
+Even without adjusting for inflation and the overall growth of the PGA Tour, Tiger’s career earnings tower over everyone else’s. He is the only player to surpass $120 million in official prize money a total that dwarfs the next closest player, Rory McIlroy, by over $17 million.
 
 ![](figures/earnings.png)
 Figure: PGA Tour Career Earnings — Top 20 All-Time.
@@ -102,11 +102,11 @@ The  red line above is Tiger. In season after season, his average strokes gained
 
 To put this into context:
 
-Scottie Scheffler, currently the No. 1 ranked player in the world, is gaining around 2.5 strokes in 2024, a phenomenal number by today’s standards.
+- Scottie Scheffler, currently the No. 1 ranked player in the world, is gaining around 2.5 strokes in 2024, a phenomenal number by today’s standards.
 
 - Xander Schauffele, another top-tier pro, sits just above 2.0 strokes gained.
 
-- Tiger, at his best, regularly beat both... by an entire additional stroke per round.
+Tiger, at his best, regularly beat both... by an entire additional stroke per round.
 
 Over a four-round tournament, that difference adds up. It’s not just winning margins, it’s why he won so often. While most players were fighting for inches, Tiger was taking miles. His strokes gained numbers explain the unexplainable: the cut streaks, the win rates, the top finishes. The underlying math was working overtime in his favor.
 
